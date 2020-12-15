@@ -7,7 +7,7 @@ from app.views import BaseViewMixin
 from user.models import User
 from user.schema import USER_CREATE
 
-users = Blueprint('users/', __name__)
+users = Blueprint('users', __name__)
 
 
 class UserAPI(MethodView, BaseViewMixin):
@@ -41,6 +41,6 @@ class UserAPI(MethodView, BaseViewMixin):
 
 
 user_view = UserAPI.as_view('user_api')
-users.add_url_rule(users.name, defaults={'user_id': None}, view_func=user_view, methods=['GET'])
-users.add_url_rule(users.name, view_func=user_view, methods=['POST'])
-users.add_url_rule(f'{users.name}<int:user_id>/', view_func=user_view, methods=['GET', 'PATCH', 'DELETE'])
+users.add_url_rule(f'{users.name}/', defaults={'user_id': None}, view_func=user_view, methods=['GET'])
+users.add_url_rule(f'{users.name}/', view_func=user_view, methods=['POST'])
+users.add_url_rule(f'{users.name}/<int:user_id>/', view_func=user_view, methods=['GET', 'PATCH', 'DELETE'])

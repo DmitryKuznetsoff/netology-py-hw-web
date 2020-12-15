@@ -6,7 +6,7 @@ from app import errors
 from authtoken.models import Token
 from user.models import User
 
-authtoken = Blueprint('authtoken/', __name__)
+authtoken = Blueprint('authtoken', __name__)
 
 
 def get_token_from_headers() -> str:
@@ -34,5 +34,5 @@ class TokenAPI(MethodView):
 
 
 token_view = TokenAPI.as_view('token_api')
-authtoken.add_url_rule(authtoken.name, view_func=token_view, methods=['POST'])
-authtoken.add_url_rule(authtoken.name, view_func=token_view, methods=['GET'])
+authtoken.add_url_rule(f'{authtoken.name}/', view_func=token_view, methods=['POST'])
+authtoken.add_url_rule(f'{authtoken.name}/', view_func=token_view, methods=['GET'])

@@ -8,7 +8,7 @@ from app.views import BaseViewMixin
 from authtoken.models import Token
 from authtoken.views import get_token_from_headers
 
-advertisement = Blueprint('advertisement/', __name__)
+advertisement = Blueprint('advertisement', __name__)
 
 
 class AdvertisementAPI(MethodView, BaseViewMixin):
@@ -63,8 +63,8 @@ class AdvertisementAPI(MethodView, BaseViewMixin):
 
 
 advertisement_view = AdvertisementAPI.as_view('advertisement_api')
-advertisement.add_url_rule(advertisement.name, view_func=advertisement_view,
+advertisement.add_url_rule(f'{advertisement.name}/', view_func=advertisement_view,
                            methods=['GET'])
-advertisement.add_url_rule(advertisement.name, view_func=advertisement_view, methods=['POST'])
-advertisement.add_url_rule(f'{advertisement.name}<int:advertisement_id>/', view_func=advertisement_view,
+advertisement.add_url_rule(f'{advertisement.name}/', view_func=advertisement_view, methods=['POST'])
+advertisement.add_url_rule(f'{advertisement.name}/<int:advertisement_id>/', view_func=advertisement_view,
                            methods=['GET', 'PATCH', 'DELETE'])
