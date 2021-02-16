@@ -1,6 +1,7 @@
 import os
 from os import getenv
 from dotenv import load_dotenv
+from aiopg.sa import create_engine
 
 load_dotenv()
 
@@ -14,3 +15,11 @@ class Config(object):
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JSON_SORT_KEYS = False
+    AIOPG_ENGINE = create_engine(user=getenv('DB_USER'),
+                                 database=getenv('DB_NAME'),
+                                 host='127.0.0.1',
+                                 password=getenv('DB_PWD'))
+    SMTP_HOST = 'smtp.gmail.com'
+    SMTP_PORT = 465
+    ADMIN_EMAIL_LOGIN = getenv('ADMIN_EMAIL_LOGIN')
+    ADMIN_EMAIL_PWD = getenv('ADMIN_EMAIL_PWD')
