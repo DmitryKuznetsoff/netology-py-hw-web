@@ -4,6 +4,7 @@ from email.message import EmailMessage
 import aiosmtplib
 from dotenv import load_dotenv
 
+from app import db
 from app.config import Config
 from user.models import User
 
@@ -40,3 +41,9 @@ def mailing_command():
 
     asyncio.get_event_loop()
     asyncio.run(get_msg_tasks())
+
+
+def create_tables():
+    db.drop_all()
+    db.create_all()
+    db.session.commit()
