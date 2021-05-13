@@ -1,0 +1,14 @@
+postgres:
+  driver: postgresql
+  database: ${DB_NAME}
+  user: ${DB_USER}
+  password: ${DB_PWD}
+  host: localhost
+  port: 5432
+  minsize: 1
+  maxsize: 5
+
+api:
+  host: 127.0.0.1
+  port: 8081
+
