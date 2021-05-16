@@ -10,7 +10,7 @@ API_V1_URL_PREFIX = '/api/v1/'
 
 class Config(object):
     BASE_PATH = os.path.dirname(__file__).rstrip('/app')
-    SQLALCHEMY_DATABASE_URI = f'postgresql://{getenv("DB_USER")}:{getenv("DB_PWD")}@{getenv("DB_HOSTNAME")}:5432/{getenv("DB_NAME")}'
+    SQLALCHEMY_DATABASE_URI = f'postgresql://{getenv("POSTGRES_USER")}:{getenv("POSTGRES_PASSWORD")}@{getenv("POSTGRES_HOSTNAME")}:5432/{getenv("POSTGRES_DB")}'
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JSON_SORT_KEYS = False
